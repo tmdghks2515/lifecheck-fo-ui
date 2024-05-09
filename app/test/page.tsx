@@ -1,10 +1,9 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import baseService from '@/core/apis/base.service'
 import useServerApi from '@/hooks/useServerApi'
 import { Code } from '@/core/dtos/base.data'
-import { makeCookieHeader } from '@/utils/api'
+import { baseService } from '@/core/apis'
 
 export default async function Test() {
   const nextCookies = cookies()
