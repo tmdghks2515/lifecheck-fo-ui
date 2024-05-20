@@ -2,9 +2,9 @@
 const nextConfig = {
     async rewrites() {
         return [
-            // api 서버로의 요청에 대한 proxy 설정
+            // apiUtils 서버로의 요청에 대한 proxy 설정
             {
-                source: '/api/:path*',
+                source: '/apiUtils/:path*',
                 destination: `${process.env.NEXT_PUBLIC_BO_GW_API_URL}/api/:path*`
             },
         ];

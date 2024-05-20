@@ -1,4 +1,4 @@
-import { authUserReducer } from '@/store/features/authUser/authUser.slice'
+import { loginUserReducer } from '@/store/features/loginUser/loginUser.slice'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
@@ -14,12 +14,12 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
-  key: 'root',
+  key: 'lc-store',
   storage,
 }
 
 const rootReducer = combineReducers({
-  authUser: authUserReducer,
+  loginUser: loginUserReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

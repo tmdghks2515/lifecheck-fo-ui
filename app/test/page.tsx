@@ -1,9 +1,9 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import useServerApi from '@/hooks/useServerApi'
-import { Code } from '@/core/dtos/base.data'
+import { Code } from '@/core/data/base.data'
 import { baseService } from '@/core/apis'
+import { useServerApi } from '@/hooks'
 
 export default async function Test() {
   const nextCookies = cookies()
@@ -12,6 +12,7 @@ export default async function Test() {
     api: baseService.selectGroupByChildCodeList,
     onSuccess: codes => {
       console.log('get result successfully >>', codes)
+      console.log('qwe')
     },
     onError: err => {
       console.log('err >>', err)

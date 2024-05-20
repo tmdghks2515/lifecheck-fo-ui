@@ -2,8 +2,8 @@
 
 import { cookies } from 'next/headers'
 
-const ACCESS_TOKEN = 'accessToken'
-const REFRESH_TOKEN = 'refreshToken'
+const ACCESS_TOKEN_KEY = process.env.ACCESS_TOKEN_KEY || ''
+const REFRESH_TOKEN_KEY = process.env.REFRESH_TOKEN_KEY || ''
 
 type Props<T, D> = {
   api: (params: T, reqInit?: RequestInit) => Promise<D>
@@ -22,15 +22,15 @@ const useServerApi = <T, D>({
     const nextCookies = cookies()
 
     let Cookie = ''
-    const accessToken = nextCookies?.get(ACCESS_TOKEN)?.value
-    const refreshToken = nextCookies?.get(REFRESH_TOKEN)?.value
-    if (accessToken) Cookie += `${ACCESS_TOKEN}=${accessToken};`
-    if (refreshToken) Cookie += `${REFRESH_TOKEN}=${refreshToken};`
+    const accessToken = nextCookies?.get(ACCESS_TOKEN_KEY)?.value
+    const refreshToken = nextCookies?.get(REFRESH_TOKEN_KEY)?.value
+    if (accessToken) Cookie += `${ACCESS_TOKEN_KEY}=${accessToken};`
+    if (refreshToken) Cookie += `${REFRESH_TOKEN_KEY}=${refreshToken};`
 
     return Cookie
   }
 
-  // SSR 에서의 api 통신에서는 쿠키를 수동으로 설정해줘야 됩니다. (CSR 에서는 웹브라우저가 자동으로 설정해줍니다.)
+  // SSR 에서의 apiUtils 통신에서는 쿠키를 수동으로 설정해줘야 됩니다. (CSR 에서는 웹브라우저가 자동으로 설정해줍니다.)
   const makeReqInit = (reqInit?: RequestInit) => ({
     ...reqInit,
     headers: { Cookie: makeCookieHeader(), ...reqInit?.headers },

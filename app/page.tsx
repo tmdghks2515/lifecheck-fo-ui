@@ -1,28 +1,28 @@
 'use client'
 
 import { useAppDispatch, useAppSelector } from '@/store'
-import { login, logout } from '@/store/features/authUser/authUser.slice'
-import useApi from '@/hooks/useClientApi'
-import { Code, UserDto } from '@/core/dtos/base.data'
-import authService from '@/core/apis/auth.service'
-import baseService from '@/core/apis/base.service'
+import { logout } from '@/store/features/loginUser/loginUser.slice'
+import { Code } from '@/core/data/base.data'
 import { useRouter } from 'next/navigation'
+import { UserDto } from '@/core/data/user.data'
+import { authService, baseService } from '@/core/apis'
+import { useClientApi } from '@/hooks'
 
 type LoginForm = { userId: string; passwd: string }
 
 export default function Home() {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const authUser = useAppSelector(state => state.authUser.value)
+  const loginUser = useAppSelector(state => state.loginUser.value)
 
-  const { callApi: callLogin } = useApi<LoginForm, UserDto>({
+  const { callApi: callLogin } = useClientApi<LoginForm, UserDto>({
     api: authService.login,
     onSuccess: user => {
       console.log('user >>', user)
     },
   })
 
-  const { callApi: callGetCodes } = useApi<string, Code[]>({
+  const { callApi: callGetCodes } = useClientApi<string, Code[]>({
     api: baseService.selectGroupByChildCodeList,
     onSuccess: () => {},
   })
@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className='text-red-200'>{authUser?.name || '비회원'}</div>
+      <div className='text-red-200'>{loginUser?.name || '비회원'}</div>
       <button type='button' onClick={handleLogin}>
         로그인
       </button>

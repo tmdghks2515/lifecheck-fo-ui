@@ -27,11 +27,6 @@ type SearchParamsManufacturer = {
   searchRegion: string | null
 }
 
-type HeaderParams = {
-  mallNo: string
-  locale: string
-}
-
 type OptionVal = string | number | boolean | undefined
 
 type Option = {
@@ -44,7 +39,6 @@ export type {
   PageParams,
   SearchParams,
   SearchParamsManufacturer,
-  HeaderParams,
   Option,
   OptionVal,
 }

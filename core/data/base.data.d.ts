@@ -1,14 +1,3 @@
-type UserDto = {
-  ci: string
-  name: string
-}
-
-type ErrorMessage = {
-  errCode: string
-  errType: string
-  message: string
-}
-
 type Code = {
   cd: string
   upCd: string
@@ -24,4 +13,4 @@ type Code = {
   delYn: boolean
 }
 
-export type { ErrorMessage, UserDto, Code }
+export type { Code }

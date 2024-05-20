@@ -1,5 +1,5 @@
-import { Code } from '@/core/dtos/base.data'
-import { api } from '@/utils/api'
+import { Code } from '@/core/data/base.data'
+import { apiUtils } from '@/utils/api.utils'
 
 const baseService = {
   // CodeController
@@ -8,7 +8,7 @@ const baseService = {
     upCd: string,
     reqInit?: RequestInit,
   ): Promise<Code[]> =>
-    api.get(`/api/codes/groupbyList/${upCd}`, undefined, reqInit),
+    apiUtils.get(`/api/codes/groupbyList/${upCd}`, undefined, reqInit),
 }
 
 export default baseService
