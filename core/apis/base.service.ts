@@ -1,5 +1,5 @@
 import { Code } from '@/core/data/base.data'
-import { api } from '@/utils/api'
+import { api } from '@/utils/api.utils'
 
 const baseService = {
   // CodeController

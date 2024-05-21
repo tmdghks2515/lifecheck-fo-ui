@@ -1,4 +1,4 @@
-import { api } from '@/utils/api'
+import { api } from '@/utils/api.utils'
 import { MemberDto } from '@/core/data/member.data'
 
 const authService = {
