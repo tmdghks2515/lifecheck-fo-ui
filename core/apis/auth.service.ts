@@ -1,11 +1,11 @@
-import { UserDto } from '@/core/data/base.data'
-import { apiUtils } from '@/utils/api.utils'
+import { api } from '@/utils/api'
+import { MemberDto } from '@/core/data/member.data'
 
 const authService = {
-  login: (params: { userId: string; passwd: string }): Promise<UserDto> =>
-    apiUtils.post('/api/auth/login', params),
+  login: (params: { userId: string; passwd: string }): Promise<MemberDto> =>
+    api.post('/api/auth/login', params),
 
-  logout: (): Promise<void> => apiUtils.post('/api/auth/logout'),
+  logout: (): Promise<void> => api.post('/api/auth/logout'),
 }
 
 export default authService

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { logout } from '@/store/features/loginUser/loginUser.slice'
 import { Code } from '@/core/data/base.data'
 import { useRouter } from 'next/navigation'
-import { UserDto } from '@/core/data/user.data'
+import { MemberDto } from '@/core/data/member.data'
 import { authService, baseService } from '@/core/apis'
 import { useClientApi } from '@/hooks'
 
@@ -15,7 +15,7 @@ export default function Home() {
   const dispatch = useAppDispatch()
   const loginUser = useAppSelector(state => state.loginUser.value)
 
-  const { callApi: callLogin } = useClientApi<LoginForm, UserDto>({
+  const { callApi: callLogin } = useClientApi<LoginForm, MemberDto>({
     api: authService.login,
     onSuccess: user => {
       console.log('user >>', user)

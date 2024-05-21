@@ -62,4 +62,4 @@ const remove = async <T, D>(
   reqInit?: RequestInit,
 ): Promise<D> => makeRequest<T, D>('DELETE', path, params, reqInit)
 
-export const apiUtils = { get, post, put, patch, remove }
+export const api = { get, post, put, patch, remove }
